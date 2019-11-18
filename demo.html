@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+
+  .iti__flag {background-image: url("path/to/flags.png");}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+.iti__flag {background-image: url("path/to/flags@2x.png");}
+}
+  body{
+  }
+  #Banner{
+    background-image: url("https://source.unsplash.com/8WAfxlO-hQk/1600x900");
+    height: 600px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position:fixed;
+  }
+   form{
+     float: right;
+     width:400px;;
+     border: hidden;
+     margin-right: 10%;
+     margin-top: 40px;
+     padding-right: 40px;
+     padding-left: 40px;
+     padding-top: 40px;
+     padding-bottom: 40px;
+     border-radius: 3%;
+     background-color: #e5e5e5;
+     border-color: black;
+     color: black;
+     font-weight: bold;
+     opacity: 0.9;
+   }
+   #container{
+     height: 200px;
+     margin-top: 90px;
+     display: flex;
+     justify-content: space-around;
+   }
+   #icon{
+     height: 200px;
+   }
+   #icon1{
+     height: 200px;
+   }
+   #icon2{
+     height: 200px;
+     opacity: 0.8;
+   }
+   #word{
+     position: absolute;
+     padding-top: 150px;
+     margin-left: 150px;
+     color: white;
+     font-family: 'Roboto', sans-serif;
+     font-weight: bold;
+     letter-spacing: 2px;
+     font-size: 60px;
+   }
+   #paragraph{
+     position: absolute;
+     padding-top: 300px;
+     margin-left: 150px;
+     color: white;
+     font-family: 'Roboto', sans-serif;
+   }
+  </style>
+  <meta charset="utf-8">
+  <meta name=”viewport” content=”width=device-width, initial-scale="1.0">
+  <title>International Telephone Input</title>
+  <link rel="stylesheet" href="build/css/intlTelInput.css">
+  <link rel="stylesheet" href="build/css/demo.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link rel=”stylesheet” href=”css/bootstrap.css”>
+<link rel=”stylesheet” href=”css/bootstrap-responsive.css”>
+
+</head>
+
+<body>
+  <div id="Banner" class=”col-md” >
+      <h1 class=”row” id="word">Learn to code by<br> watching others</h1>
+      <p class=”row” id="paragraph">See how experienced developers solve problems in real-time<br>Watching scripted tutorials is great but understanding how<br>developers think is invaluable</p>
+  <form name="submit-to-google-sheet">
+    <div class="form-group">
+  <label for="exampleInputEmail1">Email address</label>
+  <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+</div>
+<div class="form-group">
+  <label for="exampleInputPassword1">First Name</label>
+  <input name="name"type="text" class="form-control" id="exampleInputPassword1" placeholder="Name">
+</div>
+<div class="form-group">
+  <label for="exampleInputPassword1">Last Name</label>
+  <input name="last_name"type="text" class="form-control" id="exampleInputPassword1" placeholder="Last Name">
+</div>
+<div class="form-group">
+  <label for="exampleInputPassword1">Phone Number</label>
+ <input type="tel" id="phone" name="phone" class="form-control">
+</div>
+<button data-toggle="modal" data-target="#exampleModal" id="button"type="submit" class="btn btn-success">Submit</button>
+ </form>
+</div>
+</div>
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLabel">Form Submission</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       Information Submitted
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+     </div>
+   </div>
+ </div>
+
+  <script src="build/js/intlTelInput.js"></script>
+  <script>
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+      allowDropdown: true,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      geoIpLookup: function(callback) {
+        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+          var countryCode = (resp && resp.country) ? resp.country : "";
+          callback(countryCode);
+        });
+      },
+      // hiddenInput: "full_number",
+      // initialCountry: "auto",
+      // localizedCountries: { 'de': 'Deutschland' },
+      // nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      // separateDialCode: true,
+      utilsScript: "build/js/utils.js",
+    });
+  </script>
+</body>
+
+</html>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbw60ylJ6B-zmc4ue7KXfwoHk4kps3-nmB_fg2NuusKuZxodFGJ-/exec'
+  const form = document.forms['submit-to-google-sheet']
+  let change = document.querySelector("#button")
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response =>
+        console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+      form.reset()
+  })
+</script>
